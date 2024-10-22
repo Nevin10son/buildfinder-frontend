@@ -1,0 +1,130 @@
+/* ProfessionalViewPosts.css */
+
+.posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .post-card {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .post-details {
+    padding: 15px;
+  }
+  
+  .post-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .post-cost {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .view-post-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-post-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+  }
+  
+  .close-modal-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .modal-title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .modal-info {
+    margin-bottom: 15px;
+  }
+  
+  .modal-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .modal-post-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  /* Fix slider image display */
+.slick-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slick-slide img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.slick-track {
+    display: flex;
+    align-items: center;
+}
+
+.slick-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
