@@ -1,0 +1,106 @@
+/* Container for the entire ask questions page */
+.ask-questions-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+/* Content area next to the sidebar */
+.ask-questions-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color:rgb(200, 200, 241);
+    margin-left: 0px; /* Space for the sidebar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.ask-questions-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styling */
+.ask-questions-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+.form-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Input field styling */
+.form-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #007bff;
+}
+
+/* Textarea styling */
+.form-textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-height: 120px;
+    background-color: #fff;
+    outline: none;
+    resize: vertical;
+}
+
+.form-textarea:focus {
+    border-color: #007bff;
+}
+
+/* Submit button styling */
+.form-submit-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .ask-questions-content {
+        margin-left: 0; /* Remove margin on small screens */
+        padding: 10px;
+    }
+
+    .ask-questions-form {
+        width: 100%;
+        max-width: 100%;
+    }
+}

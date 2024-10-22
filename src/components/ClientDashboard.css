@@ -1,136 +1,129 @@
-/* Parent container to display sidebar and content side by side */
+/* Parent container to display sidebar, content, and sticky search bar */
 .dashboard-container {
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  /* Sidebar styling to make it fixed on the left */
-  .dashboard-container > *:first-child {
-    flex: 0 0 250px; /* Fixed width for sidebar */
-    height: 100%;
-    background-color: #f4f4f4;
-    border-right: 1px solid #ddd;
-  }
-  
-  /* Main content container next to the sidebar */
-  .content-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    overflow-y: auto;
-    background-color: #fff;
-  }
-  
-  /* Search section styling */
-  .search-section {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .search-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-  
-  .search-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .search-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Posts section styling */
-  .posts-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-  }
-  
-  /* Post card styling */
-  .post-card {
-    width: 10cm; /* Fixed width */
-    height: 8cm; /* Fixed height */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fafafa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px; /* Reduce padding to fit content */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ensure content is spaced within fixed height */
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  
-  /* Dividing line between posts */
-  .post-card + .post-card {
-    border-top: 2px solid #ddd;
-  }
-  
-  /* Image slider container */
-  .slider-image-wrapper {
-    width: 100%;
-    height: 50%; /* Adjust height to fit fixed container */
-    display: flex;
-    justify-content: center;
-  }
-  
-  .post-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Post details container */
-  .post-details {
-    width: 100%;
-    margin-top: 10px;
-    font-size: 12px; /* Reduce font size to fit content */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Ensure content aligns properly */
-    flex: 1;
-  }
-  
-  /* Header section for professional name and cost */
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .post-professional, .post-cost {
-    font-size: 14px; /* Adjust font size */
-    color: #333;
-  }
-  
-  .post-cost {
-    color: #007bff;
-  }
-  
-  /* Description styling */
-  .post-description {
-    font-size: 12px; /* Reduce font size */
-    color: #333;
-    margin-top: 5px;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sidebar styling to make it fixed on the left */
+.dashboard-container > *:first-child {
+  flex: 0 0 250px; /* Fixed width for sidebar */
+  height: 100%;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ddd;
+}
+
+/* Main content container next to the sidebar */
+.content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: rgb(200, 200, 241);
+  margin-right: 250px; /* Space for the sticky search section */
+  padding-top: 80px; /* Space between first post and header */
+}
+
+/* Sticky Search section styling */
+.search-section {
+  position: fixed;
+  right: 0;
+  top: 150px; /* Add more space from the top */
+  width: 200px;
+  padding: 20px;
+  background-color: rgb(200, 200, 241);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+/* Search input styling */
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Search button styling */
+.search-button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Posts section styling */
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Post card styling */
+.post-card {
+  width: 10cm; /* Fixed width */
+  height: 8cm; /* Fixed height */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Divider between posts */
+.post-divider {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: #ddd;
+  margin-top: 20px;
+}
+
+/* Post buttons styling */
+.post-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.view-profile-button,
+.save-image-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.view-profile-button:hover,
+.save-image-button:hover {
+  background-color: #0056b3;
+}
+
+/* Additional styling for other elements remains unchanged */

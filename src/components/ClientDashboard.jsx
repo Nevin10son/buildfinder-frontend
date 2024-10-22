@@ -20,16 +20,16 @@ const ClientDashboard = () => {
         {},
         { headers: { token: sessionStorage.getItem('token') } }
       )
-      .then(response => {
+      .then((response) => {
         console.log(response.data); // Check the data structure
         setPosts(response.data); // Set the array of posts directly
       })
-      .catch(err => console.error('Error fetching posts:', err));
+      .catch((err) => console.error('Error fetching posts:', err));
   }, []);
 
   // Handle search functionality
   const handleSearch = () => {
-    const filtered = posts.filter(post =>
+    const filtered = posts.filter((post) =>
       post.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredPosts(filtered);
@@ -41,7 +41,7 @@ const ClientDashboard = () => {
   // Slider settings for the images
   const sliderSettings = {
     dots: true,
-    infinite: true,
+    infinite: postsToDisplay.some(post => post.postedImages.length > 1), // Enable infinite scroll only if there is more than 1 image
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -52,51 +52,64 @@ const ClientDashboard = () => {
       <SideBar /> {/* Sidebar component */}
 
       <div className="content-container">
-        {/* Search Section */}
-        <div className="search-section">
-          <input
-            type="text"
-            placeholder="Search posts..."
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            className="search-input"
-          />
-          <button onClick={handleSearch} className="search-button">
-            Search
-          </button>
-        </div>
-
         {/* Posts Section */}
         <div className="posts-section">
-          {postsToDisplay.map(post => (
-            <div key={post._id} className="post-card">
-              {/* Image Slider */}
-              <Slider {...sliderSettings}>
-                {post.postedImages.map(image => (
-                  <div key={image._id} className="slider-image-wrapper">
-                    <img
-                      src={`http://localhost:8000/uploads/posts/${image.url}`}
-                      alt="Post"
-                      className="post-image"
-                    />
-                  </div>
-                ))}
-              </Slider>
+          {postsToDisplay.map((post) => (
+            <React.Fragment key={post._id}>
+              <div className="post-card">
+                {/* Image Slider */}
+                <Slider {...sliderSettings}>
+                  {post.postedImages.map((image) => (
+                    <div key={image._id} className="slider-image-wrapper">
+                      <img
+                        src={`http://localhost:8000/uploads/posts/${image.url}`}
+                        alt="Post"
+                        className="post-image"
+                      />
+                    </div>
+                  ))}
+                </Slider>
 
-              {/* Post Details */}
-              <div className="post-details">
-                <div className="post-header">
-                  <p className="post-professional">Posted by: {post.professionalName || 'Unknown'}</p>
-                  <p className="post-cost">{post.cost ? `Cost: ${post.cost}` : 'Cost: Not specified'}</p>
+                {/* Post Details */}
+                <div className="post-details">
+                  <div className="post-header">
+                    <p className="post-professional">By: {post.professionalName || 'Unknown'}</p>
+                    <p className="post-cost">{post.cost ? `Cost: ${post.cost}` : 'Cost: Not specified'}</p>
+                  </div>
+                  <p className="post-description">
+                    {post.description || 'No description provided.'}
+                  </p>
+
+                  {/* Buttons Section */}
+                  <div className="post-buttons">
+                    <button className="view-profile-button">
+                      <Link to={`/profile/${post.professionalId}`}>View Profile</Link>
+                    </button>
+                    <button className="save-image-button">Save Image</button>
+                  </div>
                 </div>
-                <p className="post-description">
-                  {post.description || 'No description provided.'}
-                </p>
               </div>
-            </div>
+
+              {/* Horizontal line after each post */}
+              <hr className="post-divider" />
+            </React.Fragment>
           ))}
         </div>
-        
+      </div>
+
+      {/* Sticky Search Section */}
+      <div className="search-section">
+        <label htmlFor="">Search tag</label>
+        <input
+          type="text"
+          placeholder="Search tag..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+        <button onClick={handleSearch} className="search-button">
+          Search
+        </button>
       </div>
     </div>
   );
