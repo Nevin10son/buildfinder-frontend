@@ -20,6 +20,8 @@ import Addpost from './components/Addpost';
 import ViewAllPosts from './components/ViewAllPosts';
 import SearchProducts from './components/SearchProducts';
 import SearchProjects from './components/SearchProjects';
+import AddProducts from './components/AddProducts';
+import ProfessionalViewProducts from './components/ProfessionalViewProducts';
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
       <Route path="/viewAllPosts" element={<ViewAllPosts/>}/>
       <Route path="/searchProducts" element={<SearchProducts/>}/>
       <Route path="/searchProjects" element={<SearchProjects/>}/>
+      <Route path="/addProducts" element={<AddProducts/>}/>
+      <Route path="/professionalViewProducts" element={<ProfessionalViewProducts/>}/>
 
       </Routes>
       </BrowserRouter>

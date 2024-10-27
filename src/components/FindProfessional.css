@@ -1,53 +1,71 @@
-/* Container for the entire component */
-.find-professionals-container {
+/* Main container to hold both sidebar and the search section */
+.main-container {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
-/* Main section for search form and results */
-.search-section {
+/* Sidebar with fixed width */
+.SideBar {
+    width: 250px;
+    height: 100vh;
+    position: relative;
+    background-color: #333;
+    flex-shrink: 0;
+}
+
+/* Main content next to the sidebar with scrollable content */
+.find-professionals-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     background-color: #f9f9f9;
+    height: 100vh;
     overflow-y: auto;
+    gap: 20px;
 }
 
-/* Form styles */
-.form {
-    display: flex; /* Use flexbox for inline layout */
-    flex-direction: row; /* Align items in a row */
-    gap: 15px; /* Space between inputs */
-    margin-bottom: 20px; /* Spacing below the form */
-}
-
-/* Heading */
+/* Heading styling */
 .heading {
-    margin-bottom: 20px;
     font-size: 24px;
     color: #333;
+    margin-bottom: 20px;
 }
 
-/* Form group styles */
+/* Form styling */
+.form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group for each input field */
 .form-group {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Make each form group take equal space */
+    flex: 1;
+    min-width: 200px;
 }
 
-/* Label styles */
+/* Label and input styles */
 label {
     margin-bottom: 5px;
     font-size: 16px;
     color: #555;
 }
 
-/* Input styles */
 .input {
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 14px;
-    width: 100%; /* Full width of the input */
+    width: 100%;
 }
 
 /* Search button */
@@ -65,9 +83,10 @@ label {
     background-color: #0056b3;
 }
 
-/* Results container */
+/* Results container with responsive design */
 .results {
-    margin-top: 20px;
+    flex: 1;
+    overflow-y: auto;
 }
 
 /* Individual result card */
@@ -77,6 +96,9 @@ label {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .result-card h3 {
@@ -89,4 +111,22 @@ label {
     margin: 5px 0;
     font-size: 14px;
     color: #555;
+}
+
+/* Scrollbar styling for consistent appearance */
+.find-professionals-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.find-professionals-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.find-professionals-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.find-professionals-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }

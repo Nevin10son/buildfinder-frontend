@@ -1,0 +1,121 @@
+.search-projects-container {
+    display: flex;
+    height: 100vh; /* Full viewport height to manage overflow */
+}
+
+.main-content {
+    flex: 1; /* Takes remaining space */
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto; /* Enable vertical scrolling for main content */
+}
+
+.projects-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.filter-form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.form-label {
+    font-size: 1rem;
+    color: #555;
+}
+
+.form-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter-submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-submit-button:hover {
+    background-color: #0056b3;
+}
+
+.projects-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-height: 600px; /* Set a maximum height for the project list */
+    overflow-y: auto; /* Enable vertical scrolling within the project list */
+    padding: 10px; /* Optional: add some padding */
+    border: 1px solid #ddd; /* Optional: add a border for better visibility */
+    border-radius: 8px; /* Optional: round the corners */
+}
+
+.project-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+}
+
+.project-images {
+    position: relative; /* Helps position slider correctly */
+    width: 100%; /* Ensures the slider takes full width */
+    height: 300px; /* Set a fixed height for the slider */
+    overflow: hidden; /* Hides overflow to prevent layout shifts */
+}
+
+.slider-image-wrapper {
+    height: 100%; /* Ensures the image wrapper fills the container */
+}
+
+.project-image {
+    width: 100%; /* Ensure images take full width of the slider */
+    height: 100%; /* Ensure images take full height of the slider */
+    object-fit: cover; /* Maintain aspect ratio while filling the area */
+}
+
+.project-details h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.project-details p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.project-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.view-profile-button,
+.view-project-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-profile-button:hover,
+.view-project-button:hover {
+    background-color: #0056b3;
+}

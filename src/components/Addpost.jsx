@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import './AddPost.css'
+import Navbar from './NavBar';
 
 const Addpost = () => {
     const [description, setDescription] = useState('');
@@ -48,6 +49,7 @@ const Addpost = () => {
   
   return (
     <div className="post-upload-container">
+      <Navbar/>
       <form onSubmit={handleSubmit} className="post-upload-form">
         <h2>Upload a New Post</h2>
 

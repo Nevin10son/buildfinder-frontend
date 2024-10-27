@@ -1,0 +1,60 @@
+/* Container for the entire Q&A section */
+.admin-qa-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 90px 20px 20px; 
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+/* Individual question and answer container */
+.qa-item {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling for client name and question */
+.qa-header p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.qa-header h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Textarea styling */
+.qa-textarea {
+    width: 95%;
+    height: 80px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    font-size: 1rem;
+}
+
+/* Submit button styling */
+.qa-submit-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.qa-submit-button:hover {
+    background-color: #0056b3;
+}

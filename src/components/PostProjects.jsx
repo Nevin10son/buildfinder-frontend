@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import './PostProject.css'
+import Navbar from './NavBar';
 
 const PostProjects = () => {
   const [projectData, setProjectData] = useState({
@@ -94,6 +96,7 @@ const PostProjects = () => {
 };
   return (
     <div>
+      <Navbar/>
       <h1>Add Your Projects</h1>
       <label>Project Title:</label><br />
         <input type="text" name="projectTitle" onChange={handleChange} /><br />

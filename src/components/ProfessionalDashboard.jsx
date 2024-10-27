@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import NavBar from './NavBar'
 
 const ProfessionalDashboard = () => {
   const [data, setData] = useState([])
@@ -24,8 +25,9 @@ const ProfessionalDashboard = () => {
   }
   useEffect(() =>{fetchData()},[])
   return (
-    
+      
       <div>
+        <NavBar/>
       {data.map(
         (value,index) => {
           const imageUrl = `http://localhost:8000/uploads/${value.profilepic}`
@@ -43,6 +45,8 @@ const ProfessionalDashboard = () => {
           <Link to={"/ViewProjectProfessional"}>View Your Projects</Link><br />
           <Link to={"/addpost"}>Add Post</Link><br />
           <Link to={"/viewAllPosts"}>View All Posts</Link><br />
+          <Link to={"/addProducts"}>Add products</Link><br />
+          <Link to={"/professionalViewProducts"}>View Products</Link><br />
           
           </div>
           
