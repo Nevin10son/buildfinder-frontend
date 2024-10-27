@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './ProfessionalViewProject.css'
+import Navbar from './NavBar';
 
 const ProfessionalViewProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -56,6 +57,7 @@ const ProfessionalViewProjects = () => {
 
   return (
     <div className="projects-container">
+      <Navbar/>
       {projects.length > 0 ? (
         projects.map((project, index) => (
           <div className="project-card" key={index}>

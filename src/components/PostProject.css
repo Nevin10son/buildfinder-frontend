@@ -1,152 +1,95 @@
-/* General styling for container */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
+/* Container and General Layout */
+.post-project-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-}
-
-.container {
-    max-width: 600px;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin: 30px auto;
-    animation: fadeIn 1s ease-in-out;
+    background-color: #f9fafb;
+    min-height: 100vh;
 }
 
-h1, h2 {
+.form-heading {
+    font-size: 2rem;
     color: #333;
-    text-align: center;
-}
-
-h1 {
-    font-size: 24px;
     margin-bottom: 20px;
 }
 
-label {
-    color: #666;
-    font-weight: 500;
-    margin-bottom: 5px;
+/* Form Styling */
+.post-project-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
-input[type="text"],
-input[type="date"],
-select,
-textarea {
+.form-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
+    margin: 10px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
     box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-select:focus,
-textarea:focus {
-    border-color: #007bff;
     outline: none;
 }
 
-/* Button styling */
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 10px 0;
+.form-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Button Styles */
+.add-category-button,
+.remove-category-button,
+.submit-button {
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 15px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Category section styling */
-.categories-section {
-    margin-top: 30px;
-}
-
-.category-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    position: relative;
-    animation: slideIn 0.5s ease;
-}
-
-.category-item h3 {
-    margin-top: 0;
-    font-size: 18px;
-}
-
-.category-item label {
-    margin-top: 10px;
-    display: block;
-}
-
-button.remove-category {
-    background-color: #e74c3c;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-button.remove-category:hover {
-    background-color: #c0392b;
-}
-
-/* Add Category button styling */
-.add-category {
-    display: block;
+.add-category-button {
     background-color: #28a745;
-    margin: 20px auto;
+    color: white;
 }
 
-.add-category:hover {
+.add-category-button:hover {
     background-color: #218838;
 }
 
-/* Submit button styling */
-.submit-btn {
+.remove-category-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.remove-category-button:hover {
+    background-color: #c82333;
+}
+
+.submit-button {
     background-color: #007bff;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
+    color: white;
+}
+
+.submit-button:hover {
+    background-color: #0069d9;
+}
+
+/* Category Styling */
+.category-heading {
+    font-size: 1.5rem;
+    color: #444;
     margin-top: 20px;
 }
 
-.submit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.category-group {
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
 }

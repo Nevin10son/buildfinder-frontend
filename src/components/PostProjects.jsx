@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import './PostProject.css'
+import React, { useState } from 'react';
+import './PostProject.css';
 import Navbar from './NavBar';
 
 const PostProjects = () => {
@@ -51,148 +51,141 @@ const PostProjects = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const professionalId = sessionStorage.getItem('userId');
 
-  const professionalId = sessionStorage.getItem('userId');
+    const formData = new FormData();
+    formData.append('professionalId', professionalId);
 
-  const formData = new FormData();
-  formData.append('professionalId', professionalId);
+    Object.entries(projectData).forEach(([key, value]) =>
+      formData.append(key, value)
+    );
 
-  Object.entries(projectData).forEach(([key, value]) =>
-    formData.append(key, value)
-  );
+    formData.append('categories', JSON.stringify(categories));
 
-  formData.append('categories',JSON.stringify(categories))
-
-  categories.forEach((category, catIndex) => {
-    
-    category.images.forEach((file, imgIndex) => {
-      formData.append(`images-${catIndex}`, file);
+    categories.forEach((category, catIndex) => {
+      category.images.forEach((file, imgIndex) => {
+        formData.append(`images-${catIndex}`, file);
+      });
     });
-  });
 
-  try {
-    // Send data to the backend using Axios
-    await axios.post('http://localhost:8000/addProject', formData, {
-      headers: { 'token':sessionStorage.getItem('token'),
-        'Content-Type': 'multipart/form-data' },
-    }).then(
-      (response)=>{
-        if (response.data.Status == "Project already exists"){
-          alert("This Project already exist")
+    try {
+      await axios.post('http://localhost:8000/addProject', formData, {
+        headers: {
+          'token': sessionStorage.getItem('token'),
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then((response) => {
+        if (response.data.Status === "Project already exists") {
+          alert("This Project already exists");
+        } else if (response.data.Status === "Project Added Successfully") {
+          alert("Project Added Successfully");
         }
-        else if(response.data.Status == "Project Added Successfully"){
-          alert("Project Added Successfully")
-        }
-      }
-      
-      
-    )
+      });
+    } catch (error) {
+      console.error('Error creating project:', error);
+      alert('Failed to create project');
+    }
+  };
 
-   
-  } catch (error) {
-    console.error('Error creating project:', error);
-    alert('Failed to create project');
-  }
-};
   return (
-    <div>
-      <Navbar/>
-      <h1>Add Your Projects</h1>
-      <label>Project Title:</label><br />
-        <input type="text" name="projectTitle" onChange={handleChange} /><br />
+    <div className="post-project-container">
+      <Navbar />
+      <h1 className="form-heading">Add Your Projects</h1>
+      <form className="post-project-form" onSubmit={handleSubmit}>
+        <label className="form-label">Project Title:</label>
+        <input type="text" name="projectTitle" className="form-input" onChange={handleChange} />
 
-        <label>Type:</label><br />
-        <select name="projectType" onChange={handleChange}>
+        <label className="form-label">Type:</label>
+        <select name="projectType" className="form-input" onChange={handleChange}>
           <option value="Interior">Interior</option>
           <option value="Full Home">Full Home</option>
-        </select><br />
+        </select>
 
-        <label>Project Location:</label><br />
-        <input type="text" name="location" onChange={handleChange} /><br />
+        <label className="form-label">Project Location:</label>
+        <input type="text" name="location" className="form-input" onChange={handleChange} />
 
-        <label>Client Name:</label><br />
-        <input type="text" name="clientname" onChange={handleChange} /><br />
+        <label className="form-label">Client Name:</label>
+        <input type="text" name="clientname" className="form-input" onChange={handleChange} />
 
-        <label>Start Date:</label><br />
-        <input type="date" name="startdt" onChange={handleChange} /><br />
+        <label className="form-label">Start Date:</label>
+        <input type="date" name="startdt" className="form-input" onChange={handleChange} />
 
-        <label>End Date:</label><br />
-        <input type="date" name="enddt" onChange={handleChange} /><br />
+        <label className="form-label">End Date:</label>
+        <input type="date" name="enddt" className="form-input" onChange={handleChange} />
 
-        <label>Work Cost:</label><br />
-        <input type="text" name="workcost" onChange={handleChange} /><br />
+        <label className="form-label">Work Cost:</label>
+        <input type="text" name="workcost" className="form-input" onChange={handleChange} />
 
-        <label>Construction Type:</label><br />
-        <select name="constructionType" onChange={handleChange}>
+        <label className="form-label">Construction Type:</label>
+        <select name="constructionType" className="form-input" onChange={handleChange}>
           <option value="Renovation">Renovation</option>
           <option value="New">New</option>
-        </select><br />
+        </select>
 
-        <label>Built Up Area (sq.ft):</label><br />
-        <input type="text" name="builtUpArea" onChange={handleChange} /><br />
+        <label className="form-label">Built Up Area (sq.ft):</label>
+        <input type="text" name="builtUpArea" className="form-input" onChange={handleChange} />
 
-        <label>No. of Bedrooms:</label><br />
-        <select name="bedrooms" onChange={handleChange}>
+        <label className="form-label">No. of Bedrooms:</label>
+        <select name="bedrooms" className="form-input" onChange={handleChange}>
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <option key={num} value={num}>{num}</option>
           ))}
-        </select><br />
+        </select>
 
-        <label>Style:</label><br />
-        <select name="style" onChange={handleChange}>
+        <label className="form-label">Style:</label>
+        <select name="style" className="form-input" onChange={handleChange}>
           <option value="Traditional">Traditional</option>
           <option value="Modern">Modern</option>
           <option value="Contemporary">Contemporary</option>
           <option value="Minimalism">Minimalism</option>
           <option value="Colonial">Colonial</option>
           <option value="Tropical">Tropical</option>
-        </select><br />
+        </select>
 
-        <label>Plot Size (cent):</label><br />
-        <input type="text" name="plotSize" onChange={handleChange} /><br />
+        <label className="form-label">Plot Size (cent):</label>
+        <input type="text" name="plotSize" className="form-input" onChange={handleChange} />
 
-        <label>Scope of Work:</label><br />
-        <select name="scope" onChange={handleChange}>
+        <label className="form-label">Scope of Work:</label>
+        <select name="scope" className="form-input" onChange={handleChange}>
           <option value="Architectural Drawing">Architectural Drawing</option>
           <option value="3D Design">3D Design</option>
           <option value="Construction">Construction</option>
-        </select><br />
+        </select>
 
-        <label>Description:</label><br />
-        <textarea name="Description" onChange={handleChange}></textarea><br />
+        <label className="form-label">Description:</label>
+        <textarea name="Description" className="form-input form-textarea" onChange={handleChange}></textarea>
 
-        {/* Dynamic Categories (Title & Images) */}
-        <h2>Categories (Title & Images)</h2>
+        <h2 className="category-heading">Categories (Title & Images)</h2>
         {categories.map((category, index) => (
-          <div key={index} style={{ marginBottom: '20px' }}>
-            <label>Title:</label><br />
+          <div key={index} className="category-group">
+            <label className="form-label">Title:</label>
             <input
               type="text"
               value={category.title}
+              className="form-input"
               onChange={(e) => handleCategoryChange(index, 'title', e.target.value)}
-            /><br />
+            />
 
-            <label>Upload Images:</label><br />
+            <label className="form-label">Upload Images:</label>
             <input
               type="file"
               multiple
+              className="form-input"
               onChange={(e) => handleImageChange(index, e)}
-            /><br />
+            />
 
-            <button type="button" onClick={() => removeCategory(index)}>
+            <button type="button" className="remove-category-button" onClick={() => removeCategory(index)}>
               Remove Category
             </button>
           </div>
         ))}
-
-        <button type="button" onClick={addCategory}>
+        <button type="button" className="add-category-button" onClick={addCategory}>
           Add Category
-        </button><br />
-
-        <button type="submit"
-        onClick={handleSubmit}>Submit</button>
+        </button>
+        <button type="submit" className="submit-button">Submit</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default PostProjects
+export default PostProjects;

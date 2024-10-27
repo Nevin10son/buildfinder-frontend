@@ -9,11 +9,13 @@ const ProfessionalProfileCreated = () => {
         userId: sessionStorage.getItem("userId"),
         firmname: "",
         field: "",
+        mobileno:"",
         experience: "",
         location: "",
         language: "",
         aboutme: "",
-        profilepic: null
+        profilepic: null,
+        Status:""
     });
     const [preview, setPreview] = useState(null);
 
@@ -31,12 +33,14 @@ const ProfessionalProfileCreated = () => {
         const formData = new FormData();
         formData.append("userId", sessionStorage.getItem("userId"));
         formData.append("firmname", input.firmname);
+        formData.append("mobileno", input.mobileno);
         formData.append("field", input.field);
         formData.append("experience", input.experience);
         formData.append("location", input.location);
         formData.append("language", input.language);
         formData.append("aboutme", input.aboutme);
         formData.append("profilepic", input.profilepic);
+        formData.append("Status", input.Status);
 
         axios.post("http://localhost:8000/profile", formData, {
             headers: {
@@ -57,7 +61,7 @@ const ProfessionalProfileCreated = () => {
         <div className="profile-container">
             <h1 className="profile-title">Create a Profile</h1>
             <div className="profile-form">
-                {['firmname', 'field', 'experience', 'location', 'language'].map((field, index) => (
+                {['firmname', 'field', 'experience', 'location', 'language', 'mobileno'].map((field, index) => (
                     <div className="form-group" key={index}>
                         <input
                             type="text"
@@ -82,6 +86,20 @@ const ProfessionalProfileCreated = () => {
                     />
                     <label className="floating-label">About</label>
                 </div>
+
+                <div className="form-group">
+                    <label htmlFor="Status" className="floating-label">Status</label>
+                    <select
+                        name="Status"
+                        value={input.Status}
+                        onChange={inputHandler}
+                        className="profile-select"
+                    >
+                        <option value="Currently Occupied">Currently Occupied</option>
+                        <option value="Available for Hiring">Available for Hiring</option>
+                    </select>
+                </div>
+
                 <div className="form-group">
                     <input
                         type="file"

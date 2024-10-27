@@ -7,7 +7,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         sessionStorage.clear();
-        navigate('/login');
+        navigate('/professionallogin');
     };
 
     // State to manage dropdown visibility

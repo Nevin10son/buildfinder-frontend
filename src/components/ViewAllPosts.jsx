@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './ViewAllPost.css'
+import Navbar from './NavBar';
 
 const ViewAllPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -49,6 +50,7 @@ const ViewAllPosts = () => {
 
   return (
     <div className="posts-container">
+      <Navbar/>
     {posts.length > 0 ? (
       posts.map((post, index) => (
         <div className="post-card" key={index}>

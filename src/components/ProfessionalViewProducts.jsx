@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ProfessionalViewProducts.css';
+import Navbar from './NavBar';
 
 const ProfessionalViewProducts = () => {
   const [products, setProducts] = useState([]);
@@ -113,6 +114,7 @@ const ProfessionalViewProducts = () => {
 
   return (
     <div className="professional-products-container">
+      <Navbar/>
       <h2 className="title">Professional's Products</h2>
       {error ? (
         <p className="error-message">{error}</p>
