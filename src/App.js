@@ -22,6 +22,7 @@ import SearchProducts from './components/SearchProducts';
 import SearchProjects from './components/SearchProjects';
 import AddProducts from './components/AddProducts';
 import ProfessionalViewProducts from './components/ProfessionalViewProducts';
+import ProfessionalProfileView from './components/ProfessionalProfileView';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
       <Route path="/searchProjects" element={<SearchProjects/>}/>
       <Route path="/addProducts" element={<AddProducts/>}/>
       <Route path="/professionalViewProducts" element={<ProfessionalViewProducts/>}/>
+      <Route path="/professionalProfileView/:userId" element={<ProfessionalProfileView/>}/>
 
       </Routes>
       </BrowserRouter>

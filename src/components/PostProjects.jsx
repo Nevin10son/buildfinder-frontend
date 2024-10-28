@@ -93,47 +93,51 @@ const PostProjects = () => {
       <h1 className="form-heading">Add Your Projects</h1>
       <form className="post-project-form" onSubmit={handleSubmit}>
         <label className="form-label">Project Title:</label>
-        <input type="text" name="projectTitle" className="form-input" onChange={handleChange} />
+        <input type="text" name="projectTitle" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">Type:</label>
-        <select name="projectType" className="form-input" onChange={handleChange}>
+        <select name="projectType" className="form-input" onChange={handleChange} required>
+          <option value="" disabled selected>Select Project Type</option>
           <option value="Interior">Interior</option>
           <option value="Full Home">Full Home</option>
         </select>
 
         <label className="form-label">Project Location:</label>
-        <input type="text" name="location" className="form-input" onChange={handleChange} />
+        <input type="text" name="location" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">Client Name:</label>
-        <input type="text" name="clientname" className="form-input" onChange={handleChange} />
+        <input type="text" name="clientname" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">Start Date:</label>
-        <input type="date" name="startdt" className="form-input" onChange={handleChange} />
+        <input type="date" name="startdt" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">End Date:</label>
-        <input type="date" name="enddt" className="form-input" onChange={handleChange} />
+        <input type="date" name="enddt" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">Work Cost:</label>
-        <input type="text" name="workcost" className="form-input" onChange={handleChange} />
+        <input type="text" name="workcost" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">Construction Type:</label>
-        <select name="constructionType" className="form-input" onChange={handleChange}>
+        <select name="constructionType" className="form-input" onChange={handleChange} required>
+          <option value="" disabled selected>Select Construction Type</option>
           <option value="Renovation">Renovation</option>
           <option value="New">New</option>
         </select>
 
         <label className="form-label">Built Up Area (sq.ft):</label>
-        <input type="text" name="builtUpArea" className="form-input" onChange={handleChange} />
+        <input type="text" name="builtUpArea" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">No. of Bedrooms:</label>
-        <select name="bedrooms" className="form-input" onChange={handleChange}>
+        <select name="bedrooms" className="form-input" onChange={handleChange} required>
+          <option value="" disabled selected>Select Bedrooms</option>
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <option key={num} value={num}>{num}</option>
           ))}
         </select>
 
         <label className="form-label">Style:</label>
-        <select name="style" className="form-input" onChange={handleChange}>
+        <select name="style" className="form-input" onChange={handleChange} required>
+          <option value="" disabled selected>Select Style</option>
           <option value="Traditional">Traditional</option>
           <option value="Modern">Modern</option>
           <option value="Contemporary">Contemporary</option>
@@ -143,17 +147,18 @@ const PostProjects = () => {
         </select>
 
         <label className="form-label">Plot Size (cent):</label>
-        <input type="text" name="plotSize" className="form-input" onChange={handleChange} />
+        <input type="text" name="plotSize" className="form-input" onChange={handleChange} required />
 
         <label className="form-label">Scope of Work:</label>
-        <select name="scope" className="form-input" onChange={handleChange}>
+        <select name="scope" className="form-input" onChange={handleChange} required>
+          <option value="" disabled selected>Select Scope of Work</option>
           <option value="Architectural Drawing">Architectural Drawing</option>
           <option value="3D Design">3D Design</option>
           <option value="Construction">Construction</option>
         </select>
 
         <label className="form-label">Description:</label>
-        <textarea name="Description" className="form-input form-textarea" onChange={handleChange}></textarea>
+        <textarea name="Description" className="form-input form-textarea" onChange={handleChange} required></textarea>
 
         <h2 className="category-heading">Categories (Title & Images)</h2>
         {categories.map((category, index) => (
@@ -164,6 +169,7 @@ const PostProjects = () => {
               value={category.title}
               className="form-input"
               onChange={(e) => handleCategoryChange(index, 'title', e.target.value)}
+              required
             />
 
             <label className="form-label">Upload Images:</label>
@@ -172,6 +178,7 @@ const PostProjects = () => {
               multiple
               className="form-input"
               onChange={(e) => handleImageChange(index, e)}
+              required
             />
 
             <button type="button" className="remove-category-button" onClick={() => removeCategory(index)}>

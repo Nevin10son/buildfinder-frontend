@@ -1,7 +1,8 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import SideBar from './SideBar'
-import './FindProfessional.css'
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import SideBar from './SideBar';
+import './FindProfessional.css';
 
 const FindProfessionals = () => {
   const [data, setData] = useState([]);
@@ -9,7 +10,10 @@ const FindProfessionals = () => {
     field: "",
     experience: "",
     location: "",
+    Status: "",
   });
+
+  const navigate = useNavigate(); // Initialize navigate
 
   const inputHandler = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value });
@@ -28,6 +32,11 @@ const FindProfessionals = () => {
         setData(response.data);
       }
     });
+  };
+
+  // Navigate to ProfessionalProfileView with specific professional's data
+  const viewProfile = (professionalId) => {
+    navigate(`/professionalProfileView/${professionalId}`);
   };
 
   return (
@@ -55,6 +64,14 @@ const FindProfessionals = () => {
             <label htmlFor="location">Location:</label>
             <input type="text" name="location" value={input.location} onChange={inputHandler} className="input" />
           </div>
+          <div className="form-group">
+            <label htmlFor="Status">Status:</label>
+            <select name="Status" value={input.Status} onChange={inputHandler} className="input">
+              <option value="" disabled>Select Status</option>
+              <option value="Currently Occupied">Currently Occupied</option>
+              <option value="Available for Hiring">Available for Hiring</option>
+            </select>
+          </div>
           <button onClick={readValue} className="btn-search">Search</button>
         </div>
 
@@ -62,12 +79,22 @@ const FindProfessionals = () => {
           {data.length > 0 ? (
             data.map((item, index) => (
               <div className="result-card" key={index}>
-                <h3>{item.firmname}</h3>
-                <p><b>Field:</b> {item.field}</p>
-                <p><b>Experience:</b> {item.experience}</p>
-                <p><b>Location:</b> {item.location}</p>
-                <p><b>Language:</b> {item.language}</p>
-                <p><b>About:</b> {item.aboutme}</p>
+                <img
+                  src={`http://localhost:8000/uploads/${item.profilepic}`} // Display profile image
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="result-info">
+                  <h3>{item.firmname}</h3>
+                  <p><b>Field:</b> {item.field}</p>
+                  <p><b>Location:</b> {item.location}</p>
+                </div>
+                <button 
+                  className="btn-view-profile"
+                  onClick={() => viewProfile(item.userId)} // Navigate with the professional ID
+                >
+                  View Profile
+                </button>
               </div>
             ))
           ) : (
@@ -77,7 +104,6 @@ const FindProfessionals = () => {
       </div>
     </div>
   );
-  
-}
+};
 
-export default FindProfessionals
+export default FindProfessionals;
