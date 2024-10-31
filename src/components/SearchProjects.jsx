@@ -9,6 +9,8 @@ import 'slick-carousel/slick/slick-theme.css';
 const SearchProjects = () => {
   const [projects, setProjects] = useState([]);
   const [input, setInput] = useState({ style: '', cost: '' });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     fetchProjects(); // Fetch all projects on initial load
@@ -40,14 +42,24 @@ const SearchProjects = () => {
     fetchProjects(); // Re-fetch projects based on input filters
   };
 
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
   const sliderSettings = {
     dots: true,
-    infinite: true,  // Enable infinite sliding
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    adaptiveHeight: true, // Adjust slider height to image height
+    adaptiveHeight: true,
   };
 
   return (
@@ -104,11 +116,84 @@ const SearchProjects = () => {
               </div>
               <div className="project-buttons">
                 <button className="view-profile-button">View Profile</button>
-                <button className="view-project-button">View Project</button>
+                <button onClick={() => openModal(project)} className="view-project-button">View Project</button>
               </div>
             </div>
           ))}
         </div>
+
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <button onClick={closeModal} className="close-button">X</button>
+              {selectedProject && (
+                <div>
+                  <h2>{selectedProject.title}</h2>
+                  
+                  {/* Project Details Table */}
+                  <table className="project-details-table">
+                    <tbody>
+                      <tr>
+                        <td><strong>Style:</strong></td>
+                        <td>{selectedProject.style}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Cost:</strong></td>
+                        <td>{selectedProject.workCost}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Location:</strong></td>
+                        <td>{selectedProject.location}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Project Type:</strong></td>
+                        <td>{selectedProject.projectType}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Client Name:</strong></td>
+                        <td>{selectedProject.clientname}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Started On:</strong></td>
+                        <td>{selectedProject.startdt}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Completed On:</strong></td>
+                        <td>{selectedProject.enddt}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Construction Type:</strong></td>
+                        <td>{selectedProject.constructionType}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Built Up Area:</strong></td>
+                        <td>{selectedProject.builtUpArea}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Bedrooms:</strong></td>
+                        <td>{selectedProject.bedrooms}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  {/* Display images without slider */}
+                  <div className="modal-images">
+                    {selectedProject.images.map((img, index) => (
+                      <div key={index} className="modal-image-item">
+                        <p><strong>Image Title:</strong> {`Image ${index + 1}`}</p>
+                        <img
+                          src={`http://localhost:8000/uploads/projects/${img}`}
+                          alt={`Project Image ${index + 1}`}
+                          className="modal-project-image"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -26,7 +26,6 @@ const SideBar = () => {
         <Link to="/clientdashboard" className="sidebar-link">Home</Link>
         <Link to="/searchProfessionals" className="sidebar-link">Search Professional</Link>
         <Link to="/searchProjects" className="sidebar-link">Search Projects</Link>
-        <Link to="/searchProducts" className="sidebar-link">Search Products</Link>
         <Link to="/askQuestions" className="sidebar-link">Ask Question</Link>
         <Link to="/seeQuestionAnswers" className="sidebar-link">See Answer</Link>
       </div>

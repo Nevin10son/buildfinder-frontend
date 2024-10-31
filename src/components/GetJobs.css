@@ -1,0 +1,94 @@
+/* Container styling */
+.job-offers-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styling */
+  .job-offers-heading {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #d9534f;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* No job offers message */
+  .no-job-offers-message {
+    color: #666;
+    text-align: center;
+    font-style: italic;
+  }
+  
+  /* Job offers list styling */
+  .job-offers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Individual job offer item */
+  .job-offer-item {
+    padding: 16px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #007bff;
+  }
+  
+  /* Job details table styling */
+  .job-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  .job-details-table td {
+    padding: 8px;
+    vertical-align: top;
+  }
+  
+  /* Label cell styling */
+  .job-details-table td:first-child {
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-right: 8px;
+    color: #007bff;
+  }
+  
+  /* Accept button styling */
+  .accept-button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .accept-button:hover {
+    background-color: #218838;
+  }
+  

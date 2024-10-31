@@ -23,6 +23,8 @@ import SearchProjects from './components/SearchProjects';
 import AddProducts from './components/AddProducts';
 import ProfessionalViewProducts from './components/ProfessionalViewProducts';
 import ProfessionalProfileView from './components/ProfessionalProfileView';
+import SeeFeedbacks from './components/SeeFeedbacks';
+import GetJob from './components/GetJob';
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
       <Route path="/addProducts" element={<AddProducts/>}/>
       <Route path="/professionalViewProducts" element={<ProfessionalViewProducts/>}/>
       <Route path="/professionalProfileView/:userId" element={<ProfessionalProfileView/>}/>
+      <Route path="/seefeedbacks" element={<SeeFeedbacks/>}/>
+      <Route path="/getjobs" element={<GetJob/>}/>
 
       </Routes>
       </BrowserRouter>

@@ -4,7 +4,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
-
+    
     const handleLogout = () => {
         sessionStorage.clear();
         navigate('/professionallogin');
@@ -48,19 +48,12 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-                <div className="navbar-item">
-                    <span className="navbar-link" onClick={() => toggleDropdown('products')}>Products</span>
-                    {dropdown.products && (
-                        <div className="dropdown">
-                            <Link to="/addProducts" className="dropdown-link">Add Product</Link>
-                            <Link to="/professionalViewProducts" className="dropdown-link">View All Products</Link>
-                        </div>
-                    )}
-                </div>
+               
                 <Link to="/professionalQaA" className="navbar-link">QandA</Link>
+                <Link to="/getJobs" className="navbar-link">Jobs</Link>
+                <Link to="/seeFeedbacks" className="navbar-link">Review</Link>
             </div>
             <div className="navbar-right">
-                
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
             </div>
         </nav>
