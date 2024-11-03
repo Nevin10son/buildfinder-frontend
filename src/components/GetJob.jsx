@@ -8,14 +8,23 @@ const GetJob = () => {
   const professionalId = sessionStorage.getItem('userId');
   const [jobOffers, setJobOffers] = useState([]);
   const [error, setError] = useState('');
-  const [acceptedJobs, setAcceptedJobs] = useState(new Set()); // Track accepted job IDs
+  const [acceptedJobs, setAcceptedJobs] = useState(new Set());
+  const [declinedJobs, setDeclinedJobs] = useState(new Set());
 
   useEffect(() => {
     axios.post('http://localhost:8000/getJobOffers', { professionalId }, {
       headers: { 'token': sessionStorage.getItem('token') },
     })
       .then(response => {
-        setJobOffers(response.data);
+        const offers = response.data;
+        setJobOffers(offers);
+
+        // Set initial accepted and declined jobs based on offerStatus
+        const accepted = new Set(offers.filter(offer => offer.offerStatus === 'accepted').map(offer => offer._id));
+        const declined = new Set(offers.filter(offer => offer.offerStatus === 'declined').map(offer => offer._id));
+        
+        setAcceptedJobs(accepted);
+        setDeclinedJobs(declined);
       })
       .catch(error => {
         console.error("Error fetching job offers:", error);
@@ -23,14 +32,27 @@ const GetJob = () => {
       });
   }, [professionalId]);
 
-  const handleAccept = (jobId) => {
-    axios.post('http://localhost:8000/updateStatus', { professionalId }, {
+  const handleJobAction = (jobId, action) => {
+    axios.post('http://localhost:8000/updateJobStatus', { professionalId, jobId, action }, {
       headers: { 'token': sessionStorage.getItem('token') }
     })
     .then(response => {
-      alert('Job accepted and status updated!');
-      console.log(`Job ${jobId} accepted.`);
-      setAcceptedJobs(prev => new Set(prev).add(jobId)); // Add jobId to the acceptedJobs set
+      alert(`Job ${action === 'accept' ? 'accepted' : 'declined'} and status updated!`);
+      if (action === 'accept') {
+        setAcceptedJobs(prev => new Set(prev).add(jobId));
+        setDeclinedJobs(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(jobId); // Ensure it's not in declined jobs
+          return newSet;
+        });
+      } else {
+        setDeclinedJobs(prev => new Set(prev).add(jobId));
+        setAcceptedJobs(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(jobId); // Ensure it's not in accepted jobs
+          return newSet;
+        });
+      }
     })
     .catch(error => {
       console.error('Failed to update status:', error);
@@ -40,7 +62,7 @@ const GetJob = () => {
 
   return (
     <div className="job-offers-container">
-        <Navbar />
+      <Navbar />
       <h2 className="job-offers-heading">Job Offers</h2>
       {error && <p className="error-message">{error}</p>}
       {jobOffers.length > 0 ? (
@@ -81,10 +103,17 @@ const GetJob = () => {
               </table>
               <button
                 className="accept-button"
-                onClick={() => handleAccept(offer._id)}
-                disabled={acceptedJobs.has(offer._id)} // Disable button if job is accepted
+                onClick={() => handleJobAction(offer._id, 'accept')}
+                disabled={acceptedJobs.has(offer._id) || declinedJobs.has(offer._id)}
               >
                 {acceptedJobs.has(offer._id) ? 'Accepted' : 'Accept'}
+              </button>
+              <button
+                className="decline-button"
+                onClick={() => handleJobAction(offer._id, 'decline')}
+                disabled={acceptedJobs.has(offer._id) || declinedJobs.has(offer._id)}
+              >
+                {declinedJobs.has(offer._id) ? 'Declined' : 'Decline'}
               </button>
             </li>
           ))}

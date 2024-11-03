@@ -78,7 +78,7 @@
 /* Post card styling */
 .post-card {
   width: 10cm; /* Fixed width */
-  height: 8cm; /* Fixed height */
+  height: 12cm; /* Fixed height */
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fafafa;

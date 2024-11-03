@@ -8,7 +8,7 @@ const FindProfessionals = () => {
   const [data, setData] = useState([]);
   const [input, setInput] = useState({
     field: "",
-    experience: "",
+    
     location: "",
     Status: "",
   });
@@ -49,17 +49,14 @@ const FindProfessionals = () => {
             <label htmlFor="field">Field:</label>
             <select name="field" value={input.field} onChange={inputHandler} className="input">
               <option value="">Select Field</option>
-              <option value="Architecture">Architecture</option>
-              <option value="Interior Designers">Interior Designers</option>
-              <option value="Civil Engineers">Civil Engineers</option>
-              <option value="Electrician">Electrician</option>
-              <option value="Landscape">Landscape</option>
+              <option value="Architect">Architect</option>
+              <option value="Interior Designs">Interior Designs</option>
+              <option value="3D & CAD">3D & CAD</option>
+              <option value="Roofing">Roofing</option>
+              <option value="Carpenter">Carpenter</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="experience">Experience:</label>
-            <input type="text" name="experience" value={input.experience} onChange={inputHandler} className="input" />
-          </div>
+          
           <div className="form-group">
             <label htmlFor="location">Location:</label>
             <input type="text" name="location" value={input.location} onChange={inputHandler} className="input" />
