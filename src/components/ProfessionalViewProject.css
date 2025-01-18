@@ -210,3 +210,6 @@
 .modal-detail label, .modal-detail span {
   margin-bottom: 5px; /* Space between the label and value */
 }
+.project-title{
+  color:black;
+}

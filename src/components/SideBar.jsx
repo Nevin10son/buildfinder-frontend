@@ -28,6 +28,7 @@ const SideBar = () => {
         <Link to="/searchProjects" className="sidebar-link">Search Projects</Link>
         <Link to="/askQuestions" className="sidebar-link">Ask Question</Link>
         <Link to="/seeQuestionAnswers" className="sidebar-link">See Answer</Link>
+        <Link to="/clientJobUpdate" className="sidebar-link">Job Update</Link>
       </div>
 
       {/* Footer with Username */}

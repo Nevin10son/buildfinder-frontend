@@ -1,0 +1,104 @@
+/* Main container to align sidebar and main content */
+.main-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    flex-shrink: 0;
+  }
+  
+  .client-job-update-container {
+    flex: 1;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .job-update-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .job-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+  .job-table th,
+  .job-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .job-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .job-row:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .status.accepted {
+    color: #fff;
+    background-color: #28a745;
+  }
+  
+  .status.declined {
+    color: #fff;
+    background-color: #dc3545;
+  }
+  
+  .status.pending {
+    color: #333;
+    background-color: #ffc107;
+  }
+  
+  .delete-button {
+    padding: 8px 12px;
+    color: white;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .delete-button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  
+  .no-jobs-message {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+  }
+  

@@ -25,6 +25,7 @@ import ProfessionalViewProducts from './components/ProfessionalViewProducts';
 import ProfessionalProfileView from './components/ProfessionalProfileView';
 import SeeFeedbacks from './components/SeeFeedbacks';
 import GetJob from './components/GetJob';
+import ClientJobUpdate from './components/ClientJobUpdate';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
       <Route path="/professionalProfileView/:userId" element={<ProfessionalProfileView/>}/>
       <Route path="/seefeedbacks" element={<SeeFeedbacks/>}/>
       <Route path="/getjobs" element={<GetJob/>}/>
+      <Route path="/clientJobUpdate" element={<ClientJobUpdate/>}/>
 
       </Routes>
       </BrowserRouter>

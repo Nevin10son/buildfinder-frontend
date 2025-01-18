@@ -31,8 +31,8 @@ const SeeFeedbacks = () => {
           {feedbacks.map((feedback, index) => (
             <li key={index} className="feedback-item">
               <p className="feedback-client"><strong>Client:</strong> {feedback.clientid?.name || 'Anonymous'}</p>
-              <p className="feedback-text"><strong>Feedback:</strong> {feedback.feedback}</p>
-              <p className="feedback-date"><strong>Date:</strong> {new Date(feedback.date).toLocaleDateString()}</p>
+              <p className="feedback-text"><strong></strong> {feedback.feedback}</p>
+              
             </li>
           ))}
         </ul>
